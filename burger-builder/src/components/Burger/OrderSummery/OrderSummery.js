@@ -1,9 +1,9 @@
 import React , { Component} from 'react';
 
-import Aux from '../../../hoc/Auxi';
+import Aux from '../../../hoc/Auxi/Auxi';
 import Button from '../../UI/Button/Button';
 class OrderSummery extends Component {
-    // this could be a functional component , doesn't have to be a calss component
+    // this could be a functional component , doesn't have to be a calss
     componentWillUpdate(){
         console.log('[OrderSummery] willUpdate');
     }
