@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route , Link} from 'react-router-dom'
 // import axios from 'axios'
 // import axios from '../../axios'
 
@@ -17,15 +17,21 @@ class Blog extends Component {
                 <header >
                     <nav>
                         <ul>
-                            <li><a href="/"> Home</a></li>
-                            <li><a href="/new-posst"> New Post</a></li>
+                            {/* <li><a href="/"> Home</a></li> */} {/* reload page again because they doesn't contain his state */}
+                            <li><Link to="/"> Home</Link></li> {/* don't need to reload page */} 
+                            {/* <li><a href="/new-posst"> New Post</a></li> */}
+                            <li><Link to={{
+                                pathname:'/new-post',
+                                hash:'#submit',
+                                search:'?quick-submit=true'
+                            }}> New Post</Link></li>
                         </ul>
                     </nav>
                 </header>
                {/*<Route path="/" exact render={() => <h1>Home</h1>}/>
                <Route path="/"  render={() => <h1>Home 2</h1>}/>*/}
                <Route path="/" exact component={Posts}/>
-               <Route path="/new-posst" component={NewPost}/>
+               <Route path="/new-post" component={NewPost}/>
             </div>
         );
     }
