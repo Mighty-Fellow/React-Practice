@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route , Link} from 'react-router-dom'
+import { Route , NavLink} from 'react-router-dom'
 // import axios from 'axios'
 // import axios from '../../axios'
 
@@ -18,13 +18,21 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             {/* <li><a href="/"> Home</a></li> */} {/* reload page again because they doesn't contain his state */}
-                            <li><Link to="/"> Home</Link></li> {/* don't need to reload page */} 
+                            <li><NavLink 
+                            to="/" 
+                            exact 
+                            activeClassName="my-active"
+                            activeStyle={{
+                                color: '#fa923f',
+                                textDecoration: 'underline'
+                            }}
+                            > Home</NavLink></li> {/* don't need to reload page */} 
                             {/* <li><a href="/new-posst"> New Post</a></li> */}
-                            <li><Link to={{
+                            <li><NavLink to={{
                                 pathname:'/new-post',
                                 hash:'#submit',
                                 search:'?quick-submit=true'
-                            }}> New Post</Link></li>
+                            }}> New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>
