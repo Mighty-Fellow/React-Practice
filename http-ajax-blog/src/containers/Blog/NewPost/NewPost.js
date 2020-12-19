@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios'
 // import post from '../Post/Post';
 import './NewPost.css'
+import { Redirect} from 'react-router-dom'
 
 class NewPost extends Component {
     state = {
         title: '',
         content: '',
         author: 'Raton Nana',
+        submitted : false
     }
     postDataHandler = ()=>{
         const data = {
@@ -18,11 +20,19 @@ class NewPost extends Component {
         axios.post('/posts',data)
         .then(response=>{
             console.log(response);
+             this.props.history.replace('/posts') // TODO redirect and replace changing the page after some operation is completed we don't history our old pages 
+            // this.props.history.push('/posts') // TODO Push we get history our old pages 
+            // this.setState({submitted:true}) // TODO redirect and replace changing the page after some operation is completed we don't history our old pages 
         })     
     }
     render() {
+        let redirect = null
+        if(this.state.submitted){
+            redirect = <Redirect to="/posts"/> // TODO Redirect = Like you have post route and when you submit the data at time when successfully data store  then you redirect in the home page
+        }
         return (
             <div className="NewPost">
+                {redirect}
                <h1>Add a Post</h1>
                 <label>Title</label>
                 <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
